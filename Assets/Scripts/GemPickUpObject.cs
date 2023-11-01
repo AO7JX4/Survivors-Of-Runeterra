@@ -11,6 +11,4 @@ public class GemPickUpObject: MonoBehaviour, IPickUpObject
         character.level.AddExperience(amount);
     }
   
-
-  
 }

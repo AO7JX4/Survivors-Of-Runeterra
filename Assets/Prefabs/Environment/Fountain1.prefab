@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 362039867824114339}
   - component: {fileID: 4730040350208535884}
   - component: {fileID: -7186863720600353456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fountain1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

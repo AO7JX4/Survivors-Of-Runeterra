@@ -27,8 +27,7 @@ public class EnemiesManager : MonoBehaviour
 
         GameObject newEnemy=Instantiate(enemy);
         newEnemy.transform.position = position;
-        newEnemy.GetComponent<Enemy>().SetTarget(player);
-        newEnemy.GetComponent<EnemyThrowProjectile>().SetTarget(player);
+        newEnemy.GetComponent<EnemyBehaviour>().SetTarget(player);
         newEnemy.transform.parent=transform;
     }
 

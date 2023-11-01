@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable
+public class MeleeEnemy : EnemyBehaviour
 {
-    Transform targetDestination;
-    GameObject targetGameObject;
-    Character targetCharacter;
-    [SerializeField] float speed;
-    [SerializeField] int hp=999;
+
     [SerializeField] int damage=1;
-    [SerializeField] int experience_reward=400;
-
-
     Rigidbody2D rgdbd2d;
 
     private void Awake()
@@ -20,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamagable
         rgdbd2d = GetComponent<Rigidbody2D>();
     }
 
-    public void SetTarget(GameObject target)
+    public override void SetTarget(GameObject target)
     {
         targetGameObject = target;
         targetDestination=target.transform;
@@ -40,7 +33,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    private void Attack()
+    public override void Attack()
     {
         if(targetCharacter==null)
         {
@@ -50,7 +43,7 @@ public class Enemy : MonoBehaviour, IDamagable
         targetCharacter.TakeDamage(damage);
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         hp-=damage;
         if(hp<1)

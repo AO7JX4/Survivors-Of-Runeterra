@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
         currentHp-=damage;
         if (currentHp <= 0)
         {
-            Debug.Log("RIP");
+            //Debug.Log("RIP");
         }
         hpBar.SetState(currentHp,maxHp);
     }
@@ -42,4 +42,5 @@ public class Character : MonoBehaviour
             currentHp=maxHp;
         hpBar.SetState(currentHp,maxHp);
     }
+
 }
