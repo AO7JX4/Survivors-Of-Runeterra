@@ -14,4 +14,6 @@ public abstract class EnemyBehaviour : MonoBehaviour,IDamagable
      public abstract void Attack();
      public abstract void TakeDamage(int damage);
 
+    
+
 }

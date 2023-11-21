@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3366885438997189408}
   m_Layer: 7
   m_Name: BatEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,8 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   hp: 1
-  damage: 1
   experience_reward: 400
+  damage: 1
 --- !u!114 &-3113200278983535683
 MonoBehaviour:
   m_ObjectHideFlags: 0

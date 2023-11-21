@@ -42,7 +42,7 @@ public class EnemiesManager : MonoBehaviour
         }
         else
         {
-             position.y=UnityEngine.Random.Range(-spawnArea.y,spawnArea.y);
+                
              position.x=spawnArea.x*f;
         }
        
