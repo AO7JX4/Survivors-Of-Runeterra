@@ -1,22 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemiesManager : MonoBehaviour
 {
-   [SerializeField] GameObject enemy;
+   [SerializeField] WaveData stage;
    [SerializeField] Vector2 spawnArea;
-   [SerializeField] float spawnTimer;
    [SerializeField] GameObject player;
-    float timer;
+   private int stageIndex=0;
+   float time=0;
+
+    public void setTime(float t)
+    {
+        time = t;
+    }
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0f)
+        
+        if (stageIndex >stage.events.Count-1)
+            return;
+        if(time>=stage.events[stageIndex].minute*60f+stage.events[stageIndex].second)
         {
-            SpawnEnemy();
-            timer=spawnTimer;
+            for(int j=0; j<stage.events[stageIndex].amount; j++)
+            {
+                SpawnEnemy();
+            }
+            stageIndex++; 
         }
     }
 
@@ -25,7 +37,7 @@ public class EnemiesManager : MonoBehaviour
         Vector3 position=GenerateRandomPosition();
         position+=player.transform.position;
 
-        GameObject newEnemy=Instantiate(enemy);
+        GameObject newEnemy=Instantiate(stage.events[stageIndex].enemy);
         newEnemy.transform.position = position;
         newEnemy.GetComponent<EnemyBehaviour>().SetTarget(player);
         newEnemy.transform.parent=transform;
