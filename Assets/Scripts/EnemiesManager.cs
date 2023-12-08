@@ -4,50 +4,59 @@ using UnityEngine;
 
 public class EnemiesManager : MonoBehaviour
 {
-   [SerializeField] GameObject enemy;
-   [SerializeField] Vector2 spawnArea;
-   [SerializeField] float spawnTimer;
-   [SerializeField] GameObject player;
-    float timer;
+    [SerializeField] WaveData stage;
+    [SerializeField] Vector2 spawnArea;
+    [SerializeField] GameObject player;
+    private int stageIndex = 0;
+    float time = 0;
+
+    public void setTime(float t)
+    {
+        time = t;
+    }
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0f)
+        if (stageIndex > stage.events.Count - 1)
+            return;
+        if (time >= stage.events[stageIndex].minute * 60f + stage.events[stageIndex].second)
         {
-            SpawnEnemy();
-            timer=spawnTimer;
+            for (int j = 0; j < stage.events[stageIndex].amount; j++)
+            {
+                SpawnEnemy();
+            }
+            stageIndex++;
         }
     }
 
     private void SpawnEnemy()
     {
-        Vector3 position=GenerateRandomPosition();
-        position+=player.transform.position;
+        Vector3 position = GenerateRandomPosition();
+        position += player.transform.position;
 
-        GameObject newEnemy=Instantiate(enemy);
+        GameObject newEnemy = Instantiate(stage.events[stageIndex].enemy);
         newEnemy.transform.position = position;
         newEnemy.GetComponent<EnemyBehaviour>().SetTarget(player);
-        newEnemy.transform.parent=transform;
+        newEnemy.transform.parent = transform;
     }
 
     private Vector3 GenerateRandomPosition()
     {
-        Vector3 position=new Vector3();
-        float f=UnityEngine.Random.value>0.5f?-1f:1f;
-        if(UnityEngine.Random.value>0.5f)
+        Vector3 position = new Vector3();
+        float f = UnityEngine.Random.value > 0.5f ? -1f : 1f;
+        if (UnityEngine.Random.value > 0.5f)
         {
-             position.x=UnityEngine.Random.Range(-spawnArea.x,spawnArea.x);
-             position.y=spawnArea.y*f;
+            position.x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
+            position.y = spawnArea.y * f;
         }
         else
         {
-             position.y=UnityEngine.Random.Range(-spawnArea.y,spawnArea.y);
-             position.x=spawnArea.x*f;
+
+            position.x = spawnArea.x * f;
         }
-       
-        
-        position.z=0f;
+
+
+        position.z = 0f;
 
         return position;
     }

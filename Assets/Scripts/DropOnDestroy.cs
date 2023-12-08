@@ -8,8 +8,12 @@ public class DropOnDestroy : MonoBehaviour
     [SerializeField] GameObject dropItemPrefab;
     [SerializeField] [Range(0f,1f)] float chance=1f;
 
-    bool isQuitting=false;
+    static bool isQuitting=false;
     
+    public static void OnSceneChange()
+    {
+        isQuitting = true;
+    }
     private void OnApplicationQuit()
     {
         isQuitting=true;

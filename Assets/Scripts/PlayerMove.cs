@@ -44,4 +44,9 @@ public class PlayerMove : MonoBehaviour
         movementVector*=speed;
         rgbd2d.velocity=movementVector;
     }
+
+    public void Upgrade(UpgradeData upgradeData)
+    {
+        this.speed += upgradeData.speed;
+    }
 }
