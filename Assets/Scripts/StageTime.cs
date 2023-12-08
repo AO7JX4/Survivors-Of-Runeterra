@@ -5,13 +5,15 @@ using UnityEngine;
 public class StageTime : MonoBehaviour
 {
     public float time;
+    public GameObject timerObject;
+    public GameObject enemiesManagerObject;
     TimerUI timerUI;
     EnemiesManager enemiesManager;
 
     private void Awake()
     {
-        timerUI=FindObjectOfType<TimerUI>();    
-        enemiesManager = FindObjectOfType<EnemiesManager>();
+        timerUI = timerObject.GetComponent<TimerUI>();
+        enemiesManager = enemiesManagerObject.GetComponent<EnemiesManager>();
     }
 
     private void Update()

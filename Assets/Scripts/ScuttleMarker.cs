@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScuttleMarker : MonoBehaviour
 {
-   Transform player;
+    Transform player;
     private GameObject enemy; 
     Vector3 direction;
     float distance;
@@ -12,7 +12,7 @@ public class ScuttleMarker : MonoBehaviour
     private void Awake()
     {
          GameManager singleton = GameManager.instance;
-          player= singleton.playerTransform;
+         player= singleton.playerTransform;
     }
 
     public void SetTarget(GameObject t)

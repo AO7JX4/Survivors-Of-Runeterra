@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d06cfe9fc9a914f8355ce326d734b0, type: 3}
+  m_Name: OrbWeapon
+  m_EditorClassIdentifier: 
+  Name: Fire Orb
+  stats:
+    damage: 3
+    downtime: 3
+    uptime: 2
+    numberOfAttacks: 3
+  weaponBasePrefab: {fileID: 7216604048058159889, guid: 5e238d840d1e45d41909d2601e57decf, type: 3}
+  upgrades:
+  - {fileID: 11400000, guid: 419dbf442b4c97a4396f69b3ca1b6fec, type: 2}
+  - {fileID: 11400000, guid: ada37dfd2db050949a79a36d23914901, type: 2}
+  - {fileID: 11400000, guid: 972bea9ba28a57148a21ab237c84eaf3, type: 2}
+  - {fileID: 11400000, guid: 78a5ddc36df8b914fb88a8caa45440e7, type: 2}

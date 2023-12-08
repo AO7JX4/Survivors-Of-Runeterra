@@ -20,6 +20,5 @@ public class Animate : MonoBehaviour
     {
         animator.SetFloat("Horizontal",horizontal);
         animator.SetFloat("Death", death);
-        animator.SetFloat("Attack", attack);
     }
 }

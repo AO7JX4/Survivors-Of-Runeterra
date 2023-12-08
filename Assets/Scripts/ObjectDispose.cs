@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectDispose : MonoBehaviour
 {
     Transform playerTransform;
-    float maxDinstance=25f;
+    [SerializeField] float maxDinstance=25f;
 
 
     private void Start()

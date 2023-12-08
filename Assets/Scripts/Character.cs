@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+
+
+public class Character : MonoBehaviour, IDamagable
 {
     public int maxHp=100;
-    public int currentHp=100;
+    public int currentHp = 100;
     [SerializeField] StatusBar hpBar;
     [HideInInspector] public Level level;
     [HideInInspector] public Coins coins;
+    private bool isDead;
 
     private void Awake()
     {
@@ -23,10 +26,15 @@ public class Character : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+        {
+            return;
+        }
         currentHp-=damage;
         if (currentHp <= 0)
         {
-            //Debug.Log("RIP");
+            GetComponent<GameOver>().EndGame();
+            isDead = true;
         }
         hpBar.SetState(currentHp,maxHp);
     }
@@ -41,6 +49,12 @@ public class Character : MonoBehaviour
         if(currentHp > maxHp)
             currentHp=maxHp;
         hpBar.SetState(currentHp,maxHp);
+    }
+
+    public void Upgrade(UpgradeData upgradeData)
+    {
+        maxHp += upgradeData.hp;
+        currentHp += upgradeData.hp;
     }
 
 }
