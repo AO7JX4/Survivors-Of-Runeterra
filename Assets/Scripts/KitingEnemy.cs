@@ -13,6 +13,7 @@ public class KitingEnemy : EnemyBehaviour
     private Collider2D myCollider;
     private Vector2 previousMove;
 
+
     Vector3 direction;
     bool inRange=false;
     bool isAlive=true;
@@ -27,6 +28,8 @@ public class KitingEnemy : EnemyBehaviour
         animate= GetComponent<Animate>();
         myCollider = GetComponent<Collider2D>();
     }
+
+
 
     public override void SetTarget(GameObject target)
     {

@@ -10,15 +10,25 @@ public class Cast_Spell_Yasuo_AA : MonoBehaviour
     
     [SerializeField] GameObject slash;
     [SerializeField] Image img;
-
+    Animate animate;
     private void Awake()
     {
         img.fillAmount=0;
+        animate=GetComponentInParent<Animate>();
     }
 
-
-    private void Update()
+    private IEnumerator AttackAnimation() 
     {
+        animate.attack=1;
+        yield return new WaitForSeconds(0.2f); 
+        slash.SetActive(true);
+        yield return new WaitForSeconds(0.4f); 
+        animate.attack=-1;
+    }
+
+    private void FixedUpdate()
+    {
+
         currentCoolDown-=Time.deltaTime;
         img.fillAmount-=1/attackSpeed*Time.deltaTime;
         if (currentCoolDown < 0f)
@@ -41,7 +51,7 @@ public class Cast_Spell_Yasuo_AA : MonoBehaviour
             Vector3 newPosition=transform.position+directionToEnemy.normalized*2f;
             slash.transform.position=newPosition;
         }
-        slash.SetActive(true);
+        StartCoroutine(AttackAnimation());
     }
 
     private GameObject FindClosestEnemy()
